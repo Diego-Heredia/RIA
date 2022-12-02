@@ -5,8 +5,12 @@ import Navbar from "./navbar";
 
 const Land = () => {
   const { usuario } = useUserContext();
+  const navigate = useNavigate();
   useEffect(() => {
-    console.log(usuario.name);
+    // console.log(usuario.name);
+    if (usuario == null || usuario == undefined) {
+      navigate("/");
+    }
   }, []);
 
   return (
@@ -16,20 +20,24 @@ const Land = () => {
         <div className="content">
           <div className="container">
             <div className="row land">
-              <div className="row">
-                <div className="col-md-7">
-                  <h1> Hola {usuario.name}</h1>
-                  <br></br>
-                  <h3>Correo: {usuario.email}</h3>
+              {usuario ? (
+                <div className="row">
+                  <div className="col-md-7">
+                    <h1> Hola {usuario.name}</h1>
+                    <br></br>
+                    <h3>Correo: {usuario.email}</h3>
+                  </div>
+                  <div className="col-md-5">
+                    <img
+                      src={usuario.imageUrl}
+                      alt="Imagen de perfil"
+                      referrerPolicy="no-referrer"
+                    ></img>
+                  </div>
                 </div>
-                <div className="col-md-5">
-                  <img
-                    src={usuario.imageUrl}
-                    alt="Imagen de perfil"
-                    referrerPolicy="no-referrer"
-                  ></img>
-                </div>
-              </div>
+              ) : (
+                <h1>Nada</h1>
+              )}
               <div className="row">
                 <div className="col-md-3">
                   <Link to="/agregarColab">

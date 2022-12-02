@@ -54,6 +54,10 @@
     margin: 1rem 0;
   }
 }
+#navbar{
+  padding: 0.2rem 2.2rem;
+}
+
 .nav__item {
   margin-bottom: var(--mb-4);
 }
@@ -307,10 +311,14 @@ label {
 
 
       i{
+        color: #282c34;
+        
         font-size: 2rem;
-        transform: translateY(25%);
       }
 
+.usuario{
+  font-size: 3.4rem;
+}
 
 .logo{
   width: 10rem;

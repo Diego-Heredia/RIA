@@ -55,7 +55,7 @@ function Login() {
     console.log(res.profileObj);
     setTimeout(() => {
       navigate("/land");
-    }, 5000);
+    }, 500);
   };
 
   const onFailure = (err) => {
