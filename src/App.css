@@ -9,7 +9,42 @@
 .latino{
   margin: 0 2rem;
 }
-
+.user-menu{
+  position: absolute;
+  width: 12rem;
+  height: 6rem;
+  border-radius: 12px;
+  background-color: whitesmoke;
+  right: 4.5%;
+  top: 99%;
+  padding: 0.8rem 0.2rem;
+  color: #7b7b7b;
+  display: none;
+  font-size: 1.4rem;
+  
+}
+#usuario{
+  width: 5rem;
+  
+  mix-blend-mode: multiply;
+  padding: 1rem;
+  border-radius: 50%;
+}
+.activo{
+  display: block !important;
+}
+.user-menu div:not(:nth-child(1)){
+  margin: 0.4rem;
+}
+.user-menu div{
+  transition: color 0.5ms ease;
+}
+.user-menu div:hover{
+  color: #6c63ff;
+  cursor: pointer;
+  transition: color 0.5ms ease;
+  
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -42,6 +77,7 @@
   .espacio{
     margin: 0 0 5rem 0;
   }
+  
   .latino{
     display: none ;
     visibility: hidden;
@@ -329,6 +365,7 @@ label {
 
 .usuario{
   font-size: 3.4rem;
+  cursor: pointer;
 }
 #card{
   

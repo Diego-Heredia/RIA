@@ -10,17 +10,7 @@ import { useUserContext } from "../userProvider";
 const clientId =
   "422356463744-6ph6gvs0ge55fqli9nkv09lhfpu0amjv.apps.googleusercontent.com";
 
-// function Land() {
-//   const navigate = useNavigate();
-//   useEffect(() => {
-//     setTimeout(() => {
-//       navigate("/");
-//     }, 1000);
-//   }, []);
-// }
-
 function Login() {
-  const [profile, setProfile] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
     const initClient = () => {
@@ -46,23 +36,20 @@ function Login() {
 
   const onSuccess = (res) => {
     console.log(res.profileObj);
-    setProfile(res.profileObj);
-    // toggleUser(1);
+    // setProfile(res.profileObj);
     toggleUser(res.profileObj);
-    // toggleUser = res.profileObj;
-    // setUsuario = res.profileObj;
-    // console.log(usuario);
     console.log(res.profileObj);
     setTimeout(() => {
       navigate("/land");
-    }, 500);
+    }, 100);
   };
 
   const onFailure = (err) => {
     console.log("failed", err);
   };
   const logOut = () => {
-    setProfile(null);
+    // setProfile(null);
+    toggleUser(null);
   };
   return (
     <div className="fluid">
@@ -131,31 +118,7 @@ function Login() {
                       </span>
 
                       <div className="social-login">
-                        {/* <GoogleLogin
-        clientId={clientId}
-        buttonText="Inicia sesión con  Google"
-        onSuccess={onSuccess}
-        onFailure={onFailure}
-        cookiePolicy={'single_host_origin'}
-        isSignedIn={true}
-    /> */}
-                        {/* {profile === 'undefined' ?(<div>
-                  <img src={profile.imageUrl} alt="Foto usuario" />
-                  <h3>User Logged in</h3>
-                  <p>Name: {profile.name}</p>
-                  <p>Email Address: {profile.email}</p>
-                  <br />
-                  <br />
-                  <GoogleLogout clientId={clientId} buttonText="Log out" onLogoutSuccess={logOut} />
-              </div>):(<GoogleLogin
-                  clientId={clientId}
-                  buttonText="Sign in with Google"
-                  onSuccess={onSuccess}
-                  onFailure={onFailure}
-                  cookiePolicy={'single_host_origin'}
-                  isSignedIn={false}
-              />)} */}
-                        {profile ? (
+                        {/* {profile ? (
                           <div>
                             <img
                               src={profile.imageUrl}
@@ -173,6 +136,18 @@ function Login() {
                               onLogoutSuccess={logOut}
                             />
                           </div>
+                        ) : (
+                          <GoogleLogin
+                            clientId={clientId}
+                            buttonText="Sign in with Google"
+                            onSuccess={onSuccess}
+                            onFailure={onFailure}
+                            cookiePolicy={"single_host_origin"}
+                            isSignedIn={true}
+                          />
+                        )} */}
+                        {usuario ? (
+                          <div>Dentro</div>
                         ) : (
                           <GoogleLogin
                             clientId={clientId}
