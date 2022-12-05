@@ -16,14 +16,16 @@ const Land = () => {
   return (
     <div className="fluid">
       <Navbar></Navbar>
-      <div className="container fluid">
+      <div className="container fluid land centrar">
         <div className="content">
           <div className="container">
-            <div className="row land">
+            <div className="row" id="card">
               {usuario ? (
-                <div className="row">
+                <div className="row centrar">
                   <div className="col-md-7">
-                    <h1> Hola {usuario.name}</h1>
+                    <h4>Hola</h4>
+                    <br />
+                    <h3>{usuario.name}</h3>
                     <br></br>
                     <h3>Correo: {usuario.email}</h3>
                   </div>
@@ -38,7 +40,7 @@ const Land = () => {
               ) : (
                 <h1>Nada</h1>
               )}
-              <div className="row">
+              <div className="row centrar">
                 <div className="col-md-3">
                   <Link to="/agregarColab">
                     <button className="boton_agregar">Agregar</button>

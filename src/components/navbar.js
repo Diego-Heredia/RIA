@@ -12,30 +12,10 @@ const navbar = () => {
       id="navbar"
     >
       <a className="navbar-brand" href="/">
-        <img
-          src={logo}
-          width="30"
-          className="d-inline-block align-top logo nav__item"
-          alt=""
-        />
-        <img
-          src={ceth}
-          width="10"
-          className="d-inline-block align-top logo nav__item"
-          alt=""
-        />
-        <img
-          src={latino}
-          width="60"
-          className="d-inline-block align-top latino nav__item"
-          alt=""
-        />
-        <img
-          src={univic}
-          width="45"
-          className="d-inline-block align-top univic nav__item"
-          alt=""
-        />
+        <img src={logo} className=" align-top logo nav__item" alt="" />
+        <img src={ceth} className=" align-top logo ceth nav__item" alt="" />
+        <img src={latino} className=" align-top logo latino nav__item" alt="" />
+        <img src={univic} className=" align-top logo univic nav__item" alt="" />
       </a>
       <div className="col-md-1">
         <BiUserCircle className="usuario" />
