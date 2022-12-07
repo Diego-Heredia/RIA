@@ -14,7 +14,10 @@ const AgregarColab = () => {
       <Navbar></Navbar>
       <div className="Container" style={{ padding: 30 }}>
         <div className="hijo" style={{ margin: 0, padding: 50 }}>
-          <input type="file" maxFileSize={50}></input>
+          <input type="file" {...register('ImgColab',{
+            required: true
+          })} maxFileSize={50}>
+          </input>
           <Container>
             <Form onSubmit={handleSubmit(onSubmit)}>
               <Row>
@@ -69,10 +72,12 @@ const AgregarColab = () => {
                     <Form.Control
                       type="email"
                       {...register('Correo',{
-                        required: true
+                        required: true,
+                        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
                       })}
                       placeholder="Ingresa el correo"/>
                       {errors.Correo?.type==='required'&&<p>Este campo es requerido</p>}
+                      {errors.Correo?.type==='pattern'&&<p>El formato del correo no es valido</p>}
                   </Form.Group>
                   <br />
                   <Form.Group>
@@ -82,11 +87,10 @@ const AgregarColab = () => {
                       {...register('Telefono',{
                         required: true,
                         pattern:/^(\(\+?\d{2,3}\)[\*|\s|\-|\.]?(([\d][\*|\s|\-|\.]?){6})(([\d][\s|\-|\.]?){2})?|(\+?[\d][\s|\-|\.]?){8}(([\d][\s|\-|\.]?){2}(([\d][\s|\-|\.]?){2})?)?)$/i
-
                       })}
                       placeholder="Ingresa el numero telefónico"/>
                       {errors.Telefono?.type==='required'&&<p>Este campo es requerido</p>}
-                      {errors.Telefono?.type==='pattern'&&<p>El numero ingresado no es valido</p>}
+                      {errors.Telefono?.type==='pattern'&&<p>El formato del telefono no es valido</p>}
                   </Form.Group>
                   <br />
                   <Form.Group>
