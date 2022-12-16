@@ -4,11 +4,15 @@ import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
 import Navbar from "./navbar";
 import Modal from "react-bootstrap/Modal";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import ConfirmacionAlta from "./ConfirmacionAlta";
 
 const AgregarColab = () => {
-  const {register,formState: { errors },handleSubmit,} = useForm();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
   const onSubmit = (data) => {
     console.log(data);
   };
@@ -24,9 +28,13 @@ const AgregarColab = () => {
             <Form onSubmit={handleSubmit(onSubmit)}>
               <Row>
                 <Col>
-                  <Form.Group controlID="ColbID">
+                  <Form.Group controlid="ColbID">
                     <Form.Label>ColabID</Form.Label>
-                    <Form.Control type="string" {...register("ColabID", { required: true })} placeholder="Ingresa el ID"/>
+                    <Form.Control
+                      type="string"
+                      {...register("ColabID", { required: true })}
+                      placeholder="Ingresa el ID"
+                    />
                     {errors.ColabID?.type === "required" && (
                       <p>Este campo es requerido</p>
                     )}
@@ -34,7 +42,11 @@ const AgregarColab = () => {
                   <br />
                   <Form.Group>
                     <Form.Label>Nombre</Form.Label>
-                    <Form.Control type="string" {...register("Nombre", { required: true })} placeholder="Ingresa el nombre"/>
+                    <Form.Control
+                      type="string"
+                      {...register("Nombre", { required: true })}
+                      placeholder="Ingresa el nombre"
+                    />
                     {errors.Nombre?.type === "required" && (
                       <p>Este campo es requerido</p>
                     )}
@@ -42,9 +54,13 @@ const AgregarColab = () => {
                   <br />
                   <Form.Group>
                     <Form.Label>Apeliido Paterno</Form.Label>
-                    <Form.Control type="string" {...register("Apellido_Paterno", {
+                    <Form.Control
+                      type="string"
+                      {...register("Apellido_Paterno", {
                         required: true,
-                      })}placeholder="Ingresa el apellido"/>
+                      })}
+                      placeholder="Ingresa el apellido"
+                    />
                     {errors.Apellido_Paterno?.type === "required" && (
                       <p>Este campo es requerido</p>
                     )}
@@ -53,9 +69,12 @@ const AgregarColab = () => {
                   <Form.Group>
                     <Form.Label>Apeliido Materno</Form.Label>
                     <Form.Control
-                      type="string" {...register("Apellido_Materno", {
+                      type="string"
+                      {...register("Apellido_Materno", {
                         required: true,
-                      })}placeholder="Ingresa el apellido"/>
+                      })}
+                      placeholder="Ingresa el apellido"
+                    />
                     {errors.Apellido_Materno?.type === "required" && (
                       <p>Este campo es requerido</p>
                     )}
@@ -101,7 +120,7 @@ const AgregarColab = () => {
                   <br />
                   <Form.Group>
                     <Form.Label>Equipo</Form.Label>
-                    <Form.Select {...register("Equipo", {required: true,})}>
+                    <Form.Select {...register("Equipo", { required: true })}>
                       <option disabled="disabled">Selecciona una opcion</option>
                       <option value="Frontera">Frontera</option>
                       <option value="Medio">Medio</option>
@@ -111,29 +130,50 @@ const AgregarColab = () => {
                   <br />
                   <Form.Group controlId="FotoColab" className="mb-3">
                     <Form.Label>Imagen</Form.Label>
-                    <Form.Control type="file" accept=".png,.jpg,.jpeg,.webp" {...register("FotoColab", { required: true })}/>
-                    {errors.FotoColab?.type === "required" && (<p>Este campo es requerido</p>)}
+                    <Form.Control
+                      type="file"
+                      accept=".png,.jpg,.jpeg,.webp"
+                      {...register("FotoColab", { required: true })}
+                    />
+                    {errors.FotoColab?.type === "required" && (
+                      <p>Este campo es requerido</p>
+                    )}
                   </Form.Group>
                 </Col>
               </Row>
               <Row>
                 <Col>
-                  <Button type="submit" value="Enviar" variant="success" size="lg" onClick={()=>onSubmit()}>Confirmar</Button>
+                  <Button
+                    type="submit"
+                    value="Enviar"
+                    variant="success"
+                    size="lg"
+                    onClick={() => onSubmit()}
+                  >
+                    Confirmar
+                  </Button>
                 </Col>
                 <Col>
-                  <Button variant="danger" onClick={handleShow} size="lg">Cancelar</Button>
+                  <Button variant="danger" onClick={handleShow} size="lg">
+                    Cancelar
+                  </Button>
                   <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                       <Modal.Title>Cancelar Registro</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                      Los cambios no han sido guardados, ¿Deseas cancelar el registro?
+                      Los cambios no han sido guardados, ¿Deseas cancelar el
+                      registro?
                     </Modal.Body>
                     <Modal.Footer>
                       <Link to="/../land">
-                      <Button variant="secondary" onClick={handleClose}>Pagina Principal</Button>
+                        <Button variant="secondary" onClick={handleClose}>
+                          Pagina Principal
+                        </Button>
                       </Link>
-                      <Button variant="primary" onClick={handleClose}>Continuar</Button>
+                      <Button variant="primary" onClick={handleClose}>
+                        Continuar
+                      </Button>
                     </Modal.Footer>
                   </Modal>
                 </Col>
