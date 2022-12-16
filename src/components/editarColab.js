@@ -12,15 +12,17 @@ const EditarColab = () => {
       options
     );
     const data = await response.json();
-    console.log(data);
+    console.log(data[0]);
+    const info = document.querySelector(".Colab");
+    info.innerHTML += `ID: ${data[0].ID}<br />Nombre: ${data[0].Nombre}`;
   };
   useEffect(() => {
-    console.log("Hola");
     colab();
   }, []);
   return (
     <div className="fluid">
       <Navbar></Navbar>
+      <div className="Colab"></div>
     </div>
   );
 };
