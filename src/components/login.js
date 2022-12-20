@@ -80,6 +80,7 @@ function Login() {
                           id="username"
                           aria-label="Usuario"
                           placeholder="Usuario"
+                          required
                         />
                       </div>
                       <div className="form-group last mb-4">
@@ -89,6 +90,7 @@ function Login() {
                           className="form-control"
                           id="password"
                           placeholder="Contraseña"
+                          required
                         />
                       </div>
 

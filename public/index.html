@@ -15,7 +15,7 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -42,6 +42,7 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <script>
     function label_input () {
       const entradas = document.querySelector('.form-control')
@@ -53,15 +54,6 @@
 
             entradas.classList.remove('field--not-empty"')
       }     
-      // console.log(entradas.value); 
-      // entradas.addEventListener('click',()=>{
-      //   if(entradas.value == null){
-      //     entradas.classList.add('field--not-empty"')
-      //   }
-      //   else{
-      //     entradas.classList.remove('field--not-empty"')
-
-      //   }
       // })
 
       }

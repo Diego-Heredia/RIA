@@ -15,7 +15,7 @@ function App() {
     <UserProvider>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route index path="/" element={<Login />} />
           <Route path="/land" element={<Land />} />
           <Route path="/agregarColab" element={<AgregarColab />} />
           <Route path="/editarColab" element={<EditarColab />} />
