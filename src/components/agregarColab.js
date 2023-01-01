@@ -13,8 +13,22 @@ const AgregarColab = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    try{
+      let config={
+        method: 'POST',
+        headers:{
+          'Accept':'application/json',
+          'Content-Type':'application/json'
+        },
+        body: JSON.stringify(data)
+      }
+      let res= await fetch('http://localhost:3001/api/colaborador', config)
+      let json= await res.json()
+      console.log(json)
+    }catch(error){
+
+    }
   };
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
