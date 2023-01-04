@@ -41,53 +41,61 @@ const EditarColab = () => {
     const editIcon = document.querySelectorAll(".editar");
     editIcon.forEach((item) => {
       item.addEventListener("click", () => {
-        console.log("Hola ");
-        const idColab = item.getAttribute("value");
-        console.log(idColab);
-        var arrColab = [];
-        for (let i = 0; i < arr.length; i++) {
-          if (arr[i].ID == idColab) {
-            arrColab.push(arr[i]);
+        try {
+          console.log("Hola ");
+          const idColab = item.getAttribute("value");
+          console.log(idColab);
+          var arrColab = [];
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i].ID == idColab) {
+              arrColab.push(arr[i]);
+            }
           }
-        }
-        console.log("Colaborador identificado:  ", arrColab);
-        Swal.fire({
-          width: 1100,
-          title: "<strong>EDITAR <p>Colaborador</p></strong>",
-          icon: "warning",
-          html: `<h4>Seguro que editar este colaborador?</h4><hr>
-                   <h4>${arrColab[0].Nombre}</h4>
-                   <h4>${
-                     arrColab[0].Apellido_pat + " " + arrColab[0].Apellido_mat
-                   }</h4>
-                   <h4>${arr[0].Correo}</h4>
-        <h4>${arr[0].Telefono}</h4>
-                `,
+          console.log("Colaborador identificado:  ", arrColab);
+          Swal.fire({
+            width: 1100,
+            title: "<strong>EDITAR <p>Colaborador</p></strong>",
+            icon: "warning",
+            html: `<h4>Seguro que editar este colaborador?</h4><hr>
+                     <h4>${arrColab[0].Nombre}</h4>
+                     <h4>${
+                       arrColab[0].Apellido_pat + " " + arrColab[0].Apellido_mat
+                     }</h4>
+                     <h4>${arr[0].Correo}</h4>
+          <h4>${arr[0].Telefono}</h4>
+                  `,
 
-          text: "Something went wrong!",
-          showCancelButton: true,
-          cancelButtonText: "Cancelar",
-          confirmButtonText: "Guardar colaborador",
-        }).then(async (result) => {
-          if (result.isConfirmed) {
-            Swal.fire("Borrado!", `Has borrado el producto.`, "success");
-            const options = {
-              method: "DELETE",
-              mode: "cors",
-            };
-            const response = await fetch(
-              `http://localhost:5500/prod-eliminar/`,
-              options
-            );
-            navigate("/editarColab");
-          } else if (result.dismiss === Swal.DismissReason.cancel) {
-            Swal.fire(
-              "Cancelado",
-              "No se ha borrado ningun archivo :)",
-              "error"
-            );
-          }
-        });
+            text: "Something went wrong!",
+            showCancelButton: true,
+            cancelButtonText: "Cancelar",
+            confirmButtonText: "Guardar colaborador",
+          }).then(async (result) => {
+            if (result.isConfirmed) {
+              try {
+                Swal.fire("Borrado!", `Has borrado el producto.`, "success");
+                const options = {
+                  method: "DELETE",
+                  mode: "cors",
+                };
+                const response = await fetch(
+                  `http://localhost:5500/prod-eliminar/`,
+                  options
+                );
+                navigate("/editarColab");
+              } catch (error) {
+                Swal.fire("Error!", `Ha ocurrido un error.`, "error");
+              }
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+              Swal.fire(
+                "Cancelado",
+                "No se ha borrado ningun archivo :)",
+                "error"
+              );
+            }
+          });
+        } catch (error) {
+          Swal.fire("Error!", `Ha ocurrido un error.`, "error");
+        }
       });
     });
   };
