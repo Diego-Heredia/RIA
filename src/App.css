@@ -381,9 +381,7 @@ label {
   font-size: 1.8rem;
   top: 13.5%;
 }
-.editar{
-  width: 1.2rem;
-}
+
 
 .tabla{
   /* box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px; */
@@ -436,3 +434,46 @@ label {
     transform: rotate(360deg);
   }
 }
+
+
+
+
+/* ------------------ Colab Card --------------------- */
+
+#img-card{
+  aspect-ratio: 1/1;
+  width: 8rem;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: all 500ms ease;
+ 
+}
+.editar{
+  width: 1.2rem;
+  cursor: pointer;
+}
+.card{
+  transition: background-color 500ms ease, color;
+}
+.card:hover{
+  background-color: #282c34;
+  color: #fff;
+
+}
+#img-card:hover{
+  width: 11rem;
+}
+#img-card:hover::after{
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  display: block;
+  position: absolute;
+  left: 0;
+  background-color: #61dafb;
+}
+.card:hover > .editar{
+  fill: #FFF;
+}
+
+/* ------------------ Colab Card --------------------- */

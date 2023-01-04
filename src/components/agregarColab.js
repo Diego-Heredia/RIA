@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import Navbar from "./navbar";
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
-import ConfirmacionAlta from "./ConfirmacionAlta";
 
 const AgregarColab = () => {
   const {
@@ -14,21 +13,22 @@ const AgregarColab = () => {
     handleSubmit,
   } = useForm();
   const onSubmit = async (data) => {
-    try{
-      let config={
-        method: 'POST',
-        headers:{
-          'Accept':'application/json',
-          'Content-Type':'application/json'
+    console.log(data);
+    data = { ...data, IDLider: "2345678" };
+    try {
+      let config = {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(data)
-      }
-      let res= await fetch('http://localhost:3001/api/colaborador', config)
-      let json= await res.json()
-      console.log(json)
-    }catch(error){
-
-    }
+        mode: "cors",
+        body: JSON.stringify(data),
+      };
+      let res = await fetch("http://localhost:3001/api/colaborador", config);
+      let json = await res.json();
+      console.log(json);
+    } catch (error) {}
   };
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -46,7 +46,7 @@ const AgregarColab = () => {
                     <Form.Label>ColabID</Form.Label>
                     <Form.Control
                       type="string"
-                      {...register("ColabID", { required: true })}
+                      {...register("ID", { required: true })}
                       placeholder="Ingresa el ID"
                     />
                     {errors.ColabID?.type === "required" && (
@@ -67,10 +67,10 @@ const AgregarColab = () => {
                   </Form.Group>
                   <br />
                   <Form.Group>
-                    <Form.Label>Apeliido Paterno</Form.Label>
+                    <Form.Label>Apellido Paterno</Form.Label>
                     <Form.Control
                       type="string"
-                      {...register("Apellido_Paterno", {
+                      {...register("Apellido_pat", {
                         required: true,
                       })}
                       placeholder="Ingresa el apellido"
@@ -81,10 +81,10 @@ const AgregarColab = () => {
                   </Form.Group>
                   <br />
                   <Form.Group>
-                    <Form.Label>Apeliido Materno</Form.Label>
+                    <Form.Label>Apellido Materno</Form.Label>
                     <Form.Control
                       type="string"
-                      {...register("Apellido_Materno", {
+                      {...register("Apellido_mat", {
                         required: true,
                       })}
                       placeholder="Ingresa el apellido"
@@ -134,15 +134,15 @@ const AgregarColab = () => {
                   <br />
                   <Form.Group>
                     <Form.Label>Equipo</Form.Label>
-                    <Form.Select {...register("Equipo", { required: true })}>
+                    <Form.Select {...register("IDEquipo", { required: true })}>
                       <option disabled="disabled">Selecciona una opcion</option>
-                      <option value="Frontera">Frontera</option>
-                      <option value="Medio">Medio</option>
-                      <option value="Sur">Sur</option>
+                      <option value="1">Frontera</option>
+                      <option value="2">Medio</option>
+                      <option value="3">Sur</option>
                     </Form.Select>
                   </Form.Group>
                   <br />
-                  <Form.Group controlId="FotoColab" className="mb-3">
+                  {/* <Form.Group controlId="FotoColab" className="mb-3">
                     <Form.Label>Imagen</Form.Label>
                     <Form.Control
                       type="file"
@@ -152,7 +152,7 @@ const AgregarColab = () => {
                     {errors.FotoColab?.type === "required" && (
                       <p>Este campo es requerido</p>
                     )}
-                  </Form.Group>
+                  </Form.Group> */}
                 </Col>
               </Row>
               <Row>
